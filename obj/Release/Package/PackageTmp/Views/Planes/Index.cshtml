@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProyectoAerofeliz.Models.Planes>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<!--3) paso. al crear la vista de cada metodo se crea una vista predeterminada del diseño en lña interfaz de nuestra pagina 
+    aca es donde vamos a darle el diseño deseado a nuestra pagina-->
+
+<p>
+    @Html.ActionLink("Nueva Solicitud", "Create", "", new { @class="btn btn-success"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_Tipo_destino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mensaje)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_Tipo_destino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mensaje)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }, new { @class = "btn btn-Warning" }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.Id }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
